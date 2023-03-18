@@ -7,6 +7,9 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
+/**
+ * РезалтДао
+ */
 public class ResultDao {
 
     public void save(Result result) {

@@ -1,5 +1,8 @@
 package com.example.Web3.utils;
 
+/**
+ * Класс , проверяющий попадание
+ */
 public class HitChecker {
 
     public boolean isHit(double x, double y, int r) {

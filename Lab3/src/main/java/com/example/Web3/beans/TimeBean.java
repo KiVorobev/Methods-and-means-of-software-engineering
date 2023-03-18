@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Время
+ */
 @Data
 public class TimeBean implements Serializable {
 

@@ -8,6 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Резалт-сервис
+ */
 public class ResultService {
 
     private final ResultDao resultsDao = new ResultDao();

@@ -1,17 +1,17 @@
 package com.example.Web3.beans;
 
 import com.example.Web3.entity.Result;
-import com.example.Web3.mbeans.PointCounter;
 import com.example.Web3.services.ResultService;
 import com.example.Web3.utils.HitChecker;
 import com.example.Web3.utils.Validator;
 import lombok.Data;
 
-import javax.management.*;
-import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс - бин результат
+ */
 @Data
 public class ResultBean {
 
@@ -26,20 +26,8 @@ public class ResultBean {
     private final Validator validator = new Validator();
     private final ResultService resultService = new ResultService();
     private List<Result> resultList = new ArrayList<Result>(resultService.findAllResults());
-    private static final PointCounter counter;
 
-    static {
-        counter = new PointCounter();
-        try {
-            MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
-            ObjectName name = new ObjectName("com.example.Web3.mbeans:type=PointCounter");
-            mBeanServer.registerMBean(counter, name);
-        } catch (MalformedObjectNameException | InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<Result> getResults() {
+    public List<Result> getResults(){
         resultList = resultService.findAllResults();
         return resultList;
     }
@@ -51,9 +39,6 @@ public class ResultBean {
                 try {
                     makeResult(newResult);
                     resultService.addResult(newResult);
-
-                    counter.addPoint(newResult);
-
                     saveSubmitValues(newResult.getX(), newResult.getY(), newResult.getR());
                 } catch (Exception exception) {
                     System.out.println("Database is dead...");
@@ -144,9 +129,6 @@ public class ResultBean {
                 coordinatesToValues(clickResult);
                 makeResult(clickResult);
                 resultService.addResult(clickResult);
-
-                counter.addPoint(clickResult);
-
                 clickResult = new Result();
                 saveSubmitValues(newResult.getX(), newResult.getY(), newResult.getR());
             } catch (Exception exception) {

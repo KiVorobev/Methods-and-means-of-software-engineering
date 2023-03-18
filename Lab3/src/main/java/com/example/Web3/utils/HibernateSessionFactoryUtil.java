@@ -6,6 +6,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+/**
+ * Утилитный класс для сессии Хибернейт
+ */
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
 

@@ -2,8 +2,15 @@ package com.example.Web3.utils;
 
 import com.example.Web3.entity.Result;
 
+/**
+ * Класс,валидирующий поля
+ */
 public class Validator {
-
+    /**
+     * Комментарий
+     * @param result
+     * @return
+     */
     public boolean validate(Result result){
         return validateX(result) && validateY(result) && validateR(result);
     }
